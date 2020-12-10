@@ -76,7 +76,7 @@ public class AuthHelper {
                 String idToken = response.getParam("id_token");
                 email = (String) JWTParser.parse(idToken).getJWTClaimsSet().getClaim("preferred_username");
                 loginResult.setGraphServiceClient(graphClient);
-                UserSharePoint userSharePoint = springContext.getApplicationContext().getBean(UserSharePoint.class,graphClient);
+                UserSharePoint userSharePoint = springContext.getApplicationContext().getBean(UserSharePoint.class, graphClient, email);
                 System.out.println(userSharePoint.toString());
                 loginResult.setUserSharePoint(userSharePoint);
             } else {

@@ -17,7 +17,6 @@ public class UserSharePointAspect {
     @After("execution(* com.shumei.sharepoint.util.UserSharePoint.*(..))")
     public void after(JoinPoint point) {
         UserSharePoint userSharePoint = (UserSharePoint) point.getTarget();
-        //TODO 更新掉原来缓存的userSharePoint的实例,这里需要去取一下唯一的用户标志，demo暂时写死
-        UserSharePointCache.storeInstance("sxu@hillinsight.com", userSharePoint);
+        UserSharePointCache.storeInstance(userSharePoint.getUserIdentity(), userSharePoint);
     }
 }

@@ -9,7 +9,6 @@ import org.springframework.web.multipart.support.StandardMultipartHttpServletReq
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
-import java.nio.channels.FileChannel;
 
 /**
  * @author xushuai
@@ -44,7 +43,7 @@ public class AadLoginController {
             e.printStackTrace();
         }
 
-        UserSharePointCache.getUserSahrePoint(email).uploadFile("7a3a753f-5448-4661-91c3-e80878a2cd1f", newFile, "rename", "", false);
+        UserSharePointCache.getUserSharePoint(email).uploadFile("7a3a753f-5448-4661-91c3-e80878a2cd1f", newFile, "rename", "", false);
         return "success";
     }
 }

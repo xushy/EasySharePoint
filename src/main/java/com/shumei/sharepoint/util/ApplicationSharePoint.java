@@ -610,20 +610,6 @@ public class ApplicationSharePoint {
         return result;
     }
 
-    private static void sharingUrl() throws UnsupportedEncodingException {
-        IGraphServiceClient graphClient = GraphServiceClient.builder().authenticationProvider(authProvider).buildClient();
-        LinkedList<DriveRecipient> recipientsList = new LinkedList<DriveRecipient>();
-        DriveRecipient recipients = new DriveRecipient();
-        recipients.email = "944945546@qq.com";
-        recipientsList.add(recipients);
-        LinkedList<String> rolesList = new LinkedList<String>();
-        rolesList.add("read");
-        graphClient.shares(encodeSharingUrl("https://xiaoyuanmiao.sharepoint.com/:f:/s/2020Q3-RMB-FUND/EqXf07JN2Q1OhOvTxB3Wy9sBrykW1Oou2e1XBpavZXpKXA")).permission()
-                .grant(rolesList, recipientsList)
-                .buildRequest()
-                .post();
-    }
-
     private static String encodeSharingUrl(String sharingUrl) throws UnsupportedEncodingException {
         String base64Value = Base64.getEncoder().encodeToString(sharingUrl.getBytes("utf-8"));
         return "u!" + base64Value.replace("=", "").replace('/', '_').replace('+', '-');

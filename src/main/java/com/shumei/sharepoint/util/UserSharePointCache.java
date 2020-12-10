@@ -36,7 +36,7 @@ public class UserSharePointCache {
         }
     }
 
-    public static UserSharePoint getUserSahrePoint(String userIdentifier) {
+    public static UserSharePoint getUserSharePoint(String userIdentifier) {
         if (map.containsKey(userIdentifier)) {
             return map.get(userIdentifier).getData();
         }

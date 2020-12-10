@@ -14,7 +14,7 @@ public class PreLoginHandler implements AadLoginHandler {
     @Override
     public boolean skipFilter(HttpServletRequest request) {
         //TODO 判断用户的实际登录情况，返回true或者false
-        if (UserSharePointCache.containsUser("sxu@hillinsight.com")) {
+        if (UserSharePointCache.containsUser("userIdentifier")) {
             return true;
         }
         return false;

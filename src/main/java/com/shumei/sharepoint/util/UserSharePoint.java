@@ -16,7 +16,6 @@ import com.shumei.sharepoint.entity.SharePointFolder;
 import com.shumei.sharepoint.enums.PermissionEnum;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
@@ -49,10 +48,13 @@ public class UserSharePoint {
 
     private static final HashMap<String, String> fileNameIllegalChars = new HashMap<>();
 
-    IGraphServiceClient graphClient = null;
+    private IGraphServiceClient graphClient;
 
-    public UserSharePoint(IGraphServiceClient graphClient) {
+    private String userIdentity;
+
+    public UserSharePoint(IGraphServiceClient graphClient,String userIdentity) {
         this.graphClient = graphClient;
+        this.userIdentity = userIdentity;
     }
 
     static {
@@ -733,7 +735,11 @@ public class UserSharePoint {
         return str.replaceAll(" ", "%20").replaceAll(" ", "%20");
     }
 
-    public void aaa(){
-        System.out.println("aaaaaaaa");
+    public String getUserIdentity() {
+        return userIdentity;
+    }
+
+    public void setUserIdentity(String userIdentity) {
+        this.userIdentity = userIdentity;
     }
 }
